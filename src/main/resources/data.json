@@ -1,0 +1,106 @@
+[
+	{
+		"id": 4123098,
+		"firstName": "Bob",
+		"lastName": "The Builder",
+		"email": "bobthebuilder@hh.com",
+		"phone": 206120120,
+		"address":{
+			"street": "201 41st St S",
+			"city": "Birmingham",
+			"state": "Alabama",
+			"postalCode": "35222-1932",
+			"country": "United States"
+		},
+		"order": [
+			{
+				"orderId": 91873,
+				"productId": "32098761209",
+				"productName": "Ipad 16GB",
+				"quantity": 2,
+				"totalPrice": 1500,
+				"currency": "USD",
+				"payment": "Visa Credit Card"
+			},
+			{
+				"orderId": 89235,
+				"productId": "32095479799",
+				"productName": "Antivirus",
+				"quantity": 1,
+				"totalPrice": 150,
+				"currency": "USD",
+				"payment": "Visa Credit Card"
+			}
+		]
+	},
+	
+	{
+		"id": 4123098,
+		"firstName": "Ned",
+		"lastName": "Stark",
+		"email": "nedstark@hh.com",
+		"phone": 201899899,
+		"address":{
+			"street": "2600 Clinton Ave W",
+			"city": "Huntsville",
+			"state": "Alabama",
+			"postalCode": "35805-3046",
+			"country": "United States"
+		},
+		"order": [
+			{
+				"orderId": 100987,
+				"productId": "32098756346",
+				"productName": "Valyrian Steel Sword",
+				"quantity": 10,
+				"totalPrice": 9000,
+				"currency": "USD",
+				"payment": "Visa Credit Card"
+			}
+		]
+	},
+	
+	{
+		"id": 4123098,
+		"firstName": "Snow",
+		"lastName": "White",
+		"email": "snowwhite@hh.com",
+		"phone": 206120120,
+		"address":{
+			"street": "201 41st St S",
+			"city": "Birmingham",
+			"state": "Alabama",
+			"postalCode": "35222-1932",
+			"country": "United States"
+		},
+		"order": [
+			{
+				"orderId": 91873,
+				"productId": "32098761209",
+				"productName": "Ipad 16GB",
+				"quantity": 2,
+				"totalPrice": 1500,
+				"currency": "USD",
+				"payment": "Visa Credit Card"
+			},
+			{
+				"orderId": 89235,
+				"productId": "32095479799",
+				"productName": "Antivirus",
+				"quantity": 1,
+				"totalPrice": 150,
+				"currency": "USD",
+				"payment": "Visa Credit Card"
+			},
+			{
+				"orderId": 872303,
+				"productId": "32095479099",
+				"productName": "Bag",
+				"quantity": 1,
+				"totalPrice": 500,
+				"currency": "USD",
+				"payment": "Visa Credit Card"
+			}
+		]
+	}
+]
