@@ -36,18 +36,17 @@ It builds the jar file and places it in the target directory under the root proj
 ## Step 3:
 Containerize the project:
 Docker has a simple "Dockerfile" file format that it uses to specify the layers of an image. 
-Dockerfile is included in this project and below is how I have created the Dockerfile:
-`FROM openjdk:8-jdk-alpine<br/>
-VOLUME /tmp<br/>
-ARG DEPENDENCY=target/dependency<br/>
-COPY ${DEPENDENCY}/BOOT-INF/lib /app/lib<br/>
-COPY ${DEPENDENCY}/META-INF /app/META-INF<br/>
-COPY ${DEPENDENCY}/BOOT-INF/classes /app<br/>
-ENTRYPOINT ["java","-cp","app:app/lib/*","com.cust.order.SpringCustomerOrderApplication"]<br/>
-EXPOSE 8080`
+Dockerfile is included in this project and below is how I have created the Dockerfile:  
+FROM openjdk:8-jdk-alpine  
+VOLUME /tmp  
+ARG DEPENDENCY=target/dependency  
+COPY ${DEPENDENCY}/BOOT-INF/lib /app/lib  
+COPY ${DEPENDENCY}/META-INF /app/META-INF  
+COPY ${DEPENDENCY}/BOOT-INF/classes /app  
+ENTRYPOINT ["java","-cp","app:app/lib/*","com.cust.order.SpringCustomerOrderApplication"]  
+EXPOSE 8080
 
-This Dockerfile has a DEPENDENCY parameter pointing to a di
-docker build -t springio/gs-spring-boot-docker .rectory where we have unpacked the fat jar. 
+This Dockerfile has a DEPENDENCY parameter pointing to a directory. 
 So from the terminal or command prompt type in the following:
 #### `mkdir -p target/dependency && (cd target/dependency; jar -xf ../*.jar)`
 This command will generate the following folders in the target/dependency folder
