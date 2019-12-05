@@ -4,10 +4,24 @@ This project is part of assignment at Pace University.
 
 The project uses Maven build and is implemented using Spring Boot.
 
-To run this application follow the steps below.
+The web service contains four GET routes:
+<ul>
+  <li>One that displays a collection of records (List all Customers)</li>
+  <li>One that displays a single record that corresponds to an ID (List a particular customer)</li>
+  <li>One that displays a collection of records for a given entity (List of orders for individual customer)</li>
+  <li>One that displays a single record from a collection of a given entity (List a particular order for individual customer)</li>
+</ul>
 
+## Source Data
+I have used a static [JSON] (https://github.com/jalpaashara/SpringDocker/blob/master/src/main/resources/data.json) as source for data. 
 
-Alternatively you can follow the below steps to create a local environment and upload it to your docker hub as a tutorial for spring boot with Docker
+## Get Requests available 
+List all Customers: localhost:8080
+List a particular customer: localhost:8080localhost:8080/id 
+List of orders for individual customer: localhost:8080/id/orders
+List a particular order for individual customer: localhost:8080/id/orders/orderId
+
+### Follow the below steps to create a local environment and run this Spring Boot Application
 ## Step 1:
 [Download](https://github.com/jalpaashara/SpringDocker/archive/master.zip) and unzip the source repository or clone it using Git:
 #### `git clone https://github.com/jalpaashara/SpringDocker.git`
@@ -23,13 +37,13 @@ It builds the jar file and places it in the target directory under the root proj
 Containerize the project:
 Docker has a simple "Dockerfile" file format that it uses to specify the layers of an image. 
 Dockerfile is included in this project and below is how I have created the Dockerfile:
-`FROM openjdk:8-jdk-alpine
-VOLUME /tmp
-ARG DEPENDENCY=target/dependency
-COPY ${DEPENDENCY}/BOOT-INF/lib /app/lib
-COPY ${DEPENDENCY}/META-INF /app/META-INF
-COPY ${DEPENDENCY}/BOOT-INF/classes /app
-ENTRYPOINT ["java","-cp","app:app/lib/*","com.cust.order.SpringCustomerOrderApplication"]
+`FROM openjdk:8-jdk-alpine<br/>
+VOLUME /tmp<br/>
+ARG DEPENDENCY=target/dependency<br/>
+COPY ${DEPENDENCY}/BOOT-INF/lib /app/lib<br/>
+COPY ${DEPENDENCY}/META-INF /app/META-INF<br/>
+COPY ${DEPENDENCY}/BOOT-INF/classes /app<br/>
+ENTRYPOINT ["java","-cp","app:app/lib/*","com.cust.order.SpringCustomerOrderApplication"]<br/>
 EXPOSE 8080`
 
 This Dockerfile has a DEPENDENCY parameter pointing to a di
@@ -50,17 +64,30 @@ Tagnames are useful when you have to version your build images.
 You can check the image built by typing the following on your terminal/cmd:
 #### `docker images`
 
-##Step 5:
+## Step 5:
 Now you can run the docker image that is built using the following docker run command:
 #### `docker run -p 8080:8080 SpringDocker`
+-p - publishes a container’s port(s) to the host
 Now go to the browser and type localhost:8080 and it will show you a JSON with the list of customers and their orders.
-To see details of individual customer: localhost:8080/id 
-In this case I just have 3 customers which you can check with localhost:8080/4123098 or localhost:8080/4123192 or localhost:8080/4123009
+To see the details of individual customer: localhost:8080/4123098 or localhost:8080/4123192 or localhost:8080/4123009
+To see the details of orders for individual customer: localhost:8080/4123098/orders or localhost:8080/4123192/orders or localhost:8080/4123009/orders
+To see the details of a particular order for individual customer: localhost:8080/4123098/orders/91873 or localhost:8080/4123192/orders/100987 or localhost:8080/4123009/orders/67124
 
+## Step 6 (Optional)
+Until now we have used docker locally to build and run in our local environment.
+Now we can push the docker image to docker hub and run it from anywhere.
+The command to push the docker image is:
+#### `docker push springproj/SpringDocker`
+Before you do this make sure you are logged in to Docker. to login to docker use the command below:
+#### `docker login`
+And it will authenticate you and login to your docker hub repositories.
+Once your image is on the docker hub, you can run it using the run command in Step 5 from anywhere.
 
+## Other useful docker commands
+#### `docker ps`
+Lists all the docker container running
 
-
-
-
+#### `docker stop my_container_id`
+Stops the running container with id 'my_container_id'. You can get the containerId from docker ps.
 
 
